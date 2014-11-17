@@ -27,7 +27,7 @@ def view_Add():
     #auth_user_with_role = db(db.auth_membership.group_id==request.vars.role).select(d
     users = db(db.auth_user.id>=1).select(db.auth_user.ALL)
     for user in users:
-        rows=db(db.advertise.created_by==user.id).select(db.advertise.ALL)
+        row=db(db.advertise.created_by==user.id).select(db.advertise.ALL)
     #user_name=db(db.advertise.created_by).select(auth_user.firstname)
     return locals()
 

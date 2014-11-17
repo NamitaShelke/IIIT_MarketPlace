@@ -11,7 +11,11 @@
 {{pass}}
 <div><input type="button" value="Bid"></div>
 </div>
-
+<div id="user_info">
+    <div class="user_info_title">Name:</div><div class="user_info_text">{{=row.item_name}}</div>
+    <div class="user_info_title">Email address:</div><div class="user_info_text">{{=row.category}}</div>
+    <div class="user_info_title">contact No:</div><div class="user_info_text">{{=row.created_by}}</div>
+</div>
 
 
 <!--<img src="{{=URL('download')}}" />-->
