@@ -1,0 +1,7 @@
+{{extend 'layout.html'}}
+{{for row in rows:}}
+    <td>{{=row.item_name}}</td>
+    <img src="{{=URL('download', args=row.item_img)}}" /> <br />
+{{pass}}
+
+<!--<img src="{{=URL('download')}}" />-->
