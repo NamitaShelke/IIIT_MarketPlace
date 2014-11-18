@@ -1,19 +1,15 @@
+{{left_sidebar_enabled,right_sidebar_enabled=False,('message' in globals())}}
 {{extend 'layout.html'}}
-{{response.files.append(URL(request.application,'static','css/view_Add_css.css'))}}
-<div id="view_post">
-{{for row in rows:}}
+
+
+<div>
+    {{for row in rows:}}
     <div> <img src="{{=URL('download', args=row.item_img)}}" /></div>
     <div class="view_post_title">Item:</div><div class="view_post_text">{{=row.item_name}}</div>
     <div class="view_post_title">Category:</div><div class="view_post_text">{{=row.category}}</div>
     <div class="view_post_title">Posted By:</div><div class="view_post_text">{{=row.created_by.first_name}}</div>
     <div class="view_post_title">Price:</div><div class="view_post_text">{{=row.price}}</div>
     <div class="view_post_title">Number of People Bidded:</div><div class="view_post_text">{{=row.ppl_bid}}</div>
-
-<div><input type="button" value="Bid"></div>
-</div>
-<div id="user_info">
-    <div class="user_info_title">Name:</div><div class="user_info_text">{{=row.created_by.first_name}} {{=row.created_by.last_name}}</div>
-    <div class="user_info_title">Email address:</div><div class="user_info_text">{{=row.created_by.email}}</div>
-    <div class="user_info_title">contact No:</div><div class="user_info_text">{{=row.created_by.first_name}}</div>
-</div>
 {{pass}}
+    </div>
+</div>

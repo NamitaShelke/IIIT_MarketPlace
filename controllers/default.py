@@ -9,6 +9,7 @@
 ## - api is an example of Hypermedia API support and access control
 #########################################################################
 
+    
 def post_Add():
     form=SQLFORM(db.advertise)
     form.vars.add_type="sell"
@@ -25,10 +26,13 @@ def post_Add():
 
 def view_Add():
     #auth_user_with_role = db(db.auth_membership.group_id==request.vars.role).select(d
-    users = db(db.auth_user.id>=1).select(db.auth_user.ALL)
-    for user in users:
-        rows=db(db.advertise.created_by==user.id).select(db.advertise.ALL)
-    #user_name=db(db.advertise.created_by).select(auth_user.firstname)
+    rows=db(db.advertise.id).select()
+   # users = db(db.auth_user.id>=1).select(db.auth_user.ALL)
+    #for user in users:
+       # response.write(user.id)
+       # user_rows=db(db.auth_user.id==user.id).select(db.auth_user.first_name)
+    #    ad_rows=db(db.advertise.created_by==user.id).select()
+   # user_name=db(db.advertise.created_by).select(auth_user.firstname)
     return locals()
 
 @auth.requires_login()
@@ -41,8 +45,9 @@ def index():
     if you need a simple wiki simply replace the two lines below with:
     return auth.wiki()
     """
+    rows=db(db.advertise).select()
    # response.flash = T("Welcome to web2py!")
-    return dict(message=T('Hello World'))
+    return locals()
 
 
 def user():
