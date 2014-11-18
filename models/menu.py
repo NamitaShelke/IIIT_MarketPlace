@@ -25,11 +25,11 @@ response.google_analytics_id = None
 
 
 response.menu = [
-         [T('root1').capitalize(),
+         [T('root1'.title()),
              False,
              '',
              [
-             [T('level1-1').capitalize(),
+             [T('level1-1'),
                  False,
                  URL(request.application,
                  'controller',
@@ -56,7 +56,7 @@ response.menu = [
                  []],
          ]],
 
-         [T('root2').capitalize(),
+         [T('root2').title(),
              False,
              '',
              [
