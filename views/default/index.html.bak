@@ -1,19 +1,12 @@
-<<<<<<< HEAD
 {{left_sidebar_enabled,right_sidebar_enabled=False,('message' in globals())}}
 {{extend 'layout.html'}}
 
-
-<div>
-    {{for row in rows:}}
-    <div> <img src="{{=URL('download', args=row.item_img)}}" /></div>
+ {{for row in rows:}}
+<div >
+   
+     <a href="{{=URL('view_Add.html',args=[row.id])}}"><div > <img src="{{=URL('download', args=row.item_img)}}" /></div>
     <div class="view_post_title">Item:</div><div class="view_post_text">{{=row.item_name}}</div>
-    <div class="view_post_title">Category:</div><div class="view_post_text">{{=row.category}}</div>
     <div class="view_post_title">Posted By:</div><div class="view_post_text">{{=row.created_by.first_name}}</div>
     <div class="view_post_title">Price:</div><div class="view_post_text">{{=row.price}}</div>
-    <div class="view_post_title">Number of People Bidded:</div><div class="view_post_text">{{=row.ppl_bid}}</div>
+    </div></a>
 {{pass}}
-    </div>
-</div>
-=======
-{{extend 'loginLayout.html'}}
->>>>>>> e5e20d7584a219f034ed1fc900084a3625055d38

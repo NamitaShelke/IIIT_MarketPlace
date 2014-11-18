@@ -26,7 +26,7 @@ def post_Add():
 
 def view_Add():
     #auth_user_with_role = db(db.auth_membership.group_id==request.vars.role).select(d
-    rows=db(db.advertise.id).select()
+    rows=db(db.advertise.id==request.args(0)).select()
    # users = db(db.auth_user.id>=1).select(db.auth_user.ALL)
     #for user in users:
        # response.write(user.id)
