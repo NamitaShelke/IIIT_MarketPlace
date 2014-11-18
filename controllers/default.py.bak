@@ -9,6 +9,10 @@
 ## - api is an example of Hypermedia API support and access control
 #########################################################################
 
+<<<<<<< HEAD
+=======
+    
+>>>>>>> 28044749a314318cf361ef4e707c9fd983cfe3a7
 def post_Add():
     form=SQLFORM(db.advertise)
     form.vars.add_type="sell"
@@ -24,13 +28,38 @@ def post_Add():
 
 
 def view_Add():
+<<<<<<< HEAD
     rows=db(db.advertise).select()
+=======
+    #auth_user_with_role = db(db.auth_membership.group_id==request.vars.role).select(d
+    rows=db(db.advertise.id).select()
+   # users = db(db.auth_user.id>=1).select(db.auth_user.ALL)
+    #for user in users:
+       # response.write(user.id)
+       # user_rows=db(db.auth_user.id==user.id).select(db.auth_user.first_name)
+    #    ad_rows=db(db.advertise.created_by==user.id).select()
+   # user_name=db(db.advertise.created_by).select(auth_user.firstname)
+>>>>>>> 28044749a314318cf361ef4e707c9fd983cfe3a7
     return locals()
 
 @auth.requires_login()
 def index():
+<<<<<<< HEAD
    
    return dict(form=auth())
+=======
+    """
+    
+    example action using the internationalization operator T and flash
+    rendered by views/default/index.html or views/generic.html
+
+    if you need a simple wiki simply replace the two lines below with:
+    return auth.wiki()
+    """
+    rows=db(db.advertise).select()
+   # response.flash = T("Welcome to web2py!")
+    return locals()
+>>>>>>> 28044749a314318cf361ef4e707c9fd983cfe3a7
 
 
 def user():

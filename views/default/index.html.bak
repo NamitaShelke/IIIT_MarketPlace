@@ -1,1 +1,16 @@
+<<<<<<< HEAD
 {{extend 'layout.html'}}
+=======
+{{left_sidebar_enabled,right_sidebar_enabled=False,('message' in globals())}}
+{{extend 'layout.html'}}
+
+ {{for row in rows:}}
+<div >
+   
+     <a href="{{=URL('view_Add.html',args=[row.id])}}"><div > <img src="{{=URL('download', args=row.item_img)}}" /></div>
+    <div class="view_post_title">Item:</div><div class="view_post_text">{{=row.item_name}}</div>
+    <div class="view_post_title">Posted By:</div><div class="view_post_text">{{=row.created_by.first_name}}</div>
+    <div class="view_post_title">Price:</div><div class="view_post_text">{{=row.price}}</div>
+    </div></a>
+{{pass}}
+>>>>>>> 28044749a314318cf361ef4e707c9fd983cfe3a7
