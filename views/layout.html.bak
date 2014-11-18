@@ -19,7 +19,19 @@ Description: A two-column, fixed-width template with light color blend.
   
   {{response.files.append(URL(request.application,'static','plugin_layouts/layouts/Simpletex/default.css'))}}
   {{response.files.append(URL('static','plugin_layouts/superfish.js'))}}
+<<<<<<< HEAD
   
+=======
+  {{
+response.files.insert(0,URL('static','js/jquery.js'))
+response.files.insert(1,URL('static','css/calendar.css'))
+response.files.insert(2,URL('static','js/calendar.js'))
+response.files.insert(3,URL('static','js/web2py.js'))
+response.include_meta()
+response.include_files()
+}}
+
+>>>>>>> 71570326bd90abece49e73dddb8c1e0e7e5b84dd
   <style>
 ul.web2py-menu-vertical { width: 150px; position: relative; top:1em; left:1em;  z-index:30; border:0; margin:0; padding: 0; list-style: none; text-decoration: none;}
 ul.web2py-menu-vertical li { margin:0; padding:0; border:0; width: 150px; background: black; text-align:left;}
@@ -67,46 +79,56 @@ div.error { background-color: red; color: white; padding: 3px; }
     <ul>
      <li>
       <h2>
-       Recent Updates
+       Filter By:
       </h2>
       <ul>
        <li>
         <h3>
          <span>
-          6/25:
+         Category:
          </span>
-         Semper vestibulum
         </h3>
         <p>
-         <a href="#">
-          In posuere eleifend odio quisque semper augue mattis wisi maecenas ligula&hellip;
-         </a>
+          <select>
+              <option value="all">All</option>
+              <option value="hs">Hostelhold</option>
+              <option value="elect">Electronics</option>
+              <option value="mercedes">Vehicles</option>
+              <option value="audi">Others</option>
+           </select> 
         </p>
        </li>
        <li>
         <h3>
          <span>
-          6/21:
+             Date:
          </span>
-         Posuere eleifend odio
+         
         </h3>
         <p>
-         <a href="#">
-          Donec leo, vivamus fermentum nibh in augue praesent a lacus at urna congue rutrum&hellip;
-         </a>
+         <select>
+              <option value="all">All</option>
+              <option value="hs">0-15 days old</option>
+              <option value="elect">15-30 days old</option>
+              <option value="mercedes">30-60 days old</option>
+              <option value="audi">older than 60 days</option>
+           </select> 
         </p>
        </li>
        <li>
         <h3>
          <span>
-          6/17:
+             Price Range:
          </span>
-         Vivamus fermentum
         </h3>
         <p>
-         <a href="#">
-          Quisque dictum integer nisl risus, sagittis convallis, rutrum id, congue, and nibh&hellip;
-         </a>
+          <select>
+              <option value="all">All</option>
+              <option value="b_hnd">Below 100</option>
+              <option value="elect">100-1000</option>
+              <option value="mercedes">1000-2000</option>
+              <option value="audi">Above 2000</option>
+           </select> 
         </p>
        </li>
       </ul>

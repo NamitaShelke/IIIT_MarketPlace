@@ -53,17 +53,16 @@ def view_Add():
 
 @auth.requires_login()
 def index():
-    """
-    
-    example action using the internationalization operator T and flash
-    rendered by views/default/index.html or views/generic.html
-
-    if you need a simple wiki simply replace the two lines below with:
-    return auth.wiki()
-    """
-    rows=db(db.advertise).select()
+   if len(request.args):
+        page=int(request.args[0])
+   else:
+        page=0
+   items_per_page=8
+   limitby=(page*items_per_page,(page+1)*items_per_page+1)
+   rows=db().select(db.advertise.ALL,limitby=limitby)
    # response.flash = T("Welcome to web2py!")
-    return locals()
+   return locals()
+
 
 
 def user():
@@ -102,6 +101,8 @@ def call():
     """
     return service()
 
+
+    
 
 @auth.requires_login() 
 def api():

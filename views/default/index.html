@@ -1,6 +1,56 @@
 {{left_sidebar_enabled,right_sidebar_enabled=False,('message' in globals())}}
 {{extend 'layout.html'}}
+<html>
+<head>
+ <style>
+     .index_add {
+         width: 700px;
+         float: left;
+         border: 1px solid black;
+         padding: 5px;
+     }
+     
+     
+     img {
+         width: 200px;
+         height: 200px;
+         float:left;
+     }
+     .view_post_title {
+         float: left;
+     }
+     .view_post_text {
+         float: left;
+     }
+     
+     .space_div {
+         width: 70px;
+         height: 50px;
+         float: left;
+     }
+     
+ </style>
+</head>
+<body>
+    {{for i,row in enumerate(rows):}}
+ {{if i==items_per_page: break}}
+<a href="{{=URL('view_Add.html',args=[row.id])}}">
+<div class="index_add">
+    <img src="{{=URL('download', args=row.item_img)}}" />
+    <div class="space_div"></div>
+    <div class="view_post_title">Item:</div><div class="view_post_text">{{=row.item_name}}</div><br>
+    <div class="view_post_title">Posted By:</div><div class="view_post_text">{{=row.created_by.first_name}}</div><br>
+    <div class="view_post_title">Price:</div><div class="view_post_text">{{=row.price}}</div><br>    
+    </div></a><br><br>
+     <div class="space_div"></div>
+    
+{{pass}}
 
+{{if page:}}
+<a href="{{=URL(args=[page-1])}}">previous</a>
+{{pass}}
+
+<<<<<<< HEAD
 
 
  {{for row in rows:}}
@@ -10,4 +60,10 @@
     <div class="view_post_title">Posted By:</div><div class="view_post_text">{{=row.created_by.first_name}}</div>
     <div class="view_post_title">Price:</div><div class="view_post_text">{{=row.price}}</div>
     </div></a>
+=======
+{{if len(rows)>items_per_page:}}
+<a href="{{=URL(args=[page+1])}}">next</a>
+>>>>>>> 71570326bd90abece49e73dddb8c1e0e7e5b84dd
 {{pass}}
+</body>
+</html>

@@ -26,6 +26,7 @@ def post_Add():
 
 def view_Add():
     #auth_user_with_role = db(db.auth_membership.group_id==request.vars.role).select(d
+<<<<<<< HEAD
     #rows=db(db.advertise.id==request.args(0)).select()
     ############bidding_rows=db(db.bidding.add_id==request.args(0)).select()
     query=(db.bidding.add_id==request.args(0)) & (db.advertise.id==request.args(0))
@@ -43,6 +44,9 @@ def view_Add():
 
     #bidder_rows=db(db.bidding.add_id==request.args(0)).select()
    # bidders_rows=db().select()
+=======
+    rows=db(db.advertise.id==request.args(0)).select()
+>>>>>>> 71570326bd90abece49e73dddb8c1e0e7e5b84dd
    # users = db(db.auth_user.id>=1).select(db.auth_user.ALL)
     #for user in users:
        # response.write(user.id)
@@ -53,17 +57,16 @@ def view_Add():
 
 @auth.requires_login()
 def index():
-    """
-    
-    example action using the internationalization operator T and flash
-    rendered by views/default/index.html or views/generic.html
-
-    if you need a simple wiki simply replace the two lines below with:
-    return auth.wiki()
-    """
-    rows=db(db.advertise).select()
+   if len(request.args): 
+        page=int(request.args[0])
+   else: 
+        page=0
+   items_per_page=8
+   limitby=(page*items_per_page,(page+1)*items_per_page+1)
+   rows=db().select(db.advertise.ALL,limitby=limitby)
    # response.flash = T("Welcome to web2py!")
-    return locals()
+   return locals()
+
 
 
 def user():
@@ -102,6 +105,8 @@ def call():
     """
     return service()
 
+
+    
 
 @auth.requires_login() 
 def api():
