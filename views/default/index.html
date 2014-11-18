@@ -1,6 +1,8 @@
 {{left_sidebar_enabled,right_sidebar_enabled=False,('message' in globals())}}
 {{extend 'layout.html'}}
 
+
+
  {{for row in rows:}}
 <div >
      <a href="{{=URL('view_Add.html',args=[row.id])}}"><div > <img src="{{=URL('download', args=row.item_img)}}" /></div>

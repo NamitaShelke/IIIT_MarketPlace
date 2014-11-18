@@ -16,9 +16,17 @@ Description: A two-column, fixed-width template with light color blend.
   <title>
    {{=response.title or request.application}}
   </title>
+  
   {{response.files.append(URL(request.application,'static','plugin_layouts/layouts/Simpletex/default.css'))}}
   {{response.files.append(URL('static','plugin_layouts/superfish.js'))}}
-  {{include 'web2py_ajax.html'}}
+  {{
+response.files.insert(0,URL('static','js/jquery.js'))
+response.files.insert(1,URL('static','css/calendar.css'))
+response.files.insert(2,URL('static','js/calendar.js'))
+response.files.insert(3,URL('static','js/web2py.js'))
+response.include_meta()
+response.include_files()
+}}
   <style>
 ul.web2py-menu-vertical { width: 150px; position: relative; top:1em; left:1em;  z-index:30; border:0; margin:0; padding: 0; list-style: none; text-decoration: none;}
 ul.web2py-menu-vertical li { margin:0; padding:0; border:0; width: 150px; background: black; text-align:left;}
