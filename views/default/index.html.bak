@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {{left_sidebar_enabled,right_sidebar_enabled=False,('message' in globals())}}
 {{extend 'layout.html'}}
 
@@ -13,3 +14,6 @@
 {{pass}}
     </div>
 </div>
+=======
+{{extend 'loginLayout.html'}}
+>>>>>>> e5e20d7584a219f034ed1fc900084a3625055d38

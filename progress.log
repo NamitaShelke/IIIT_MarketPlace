@@ -170,6 +170,7 @@
 [2014-11-17 22:47:02] EDIT test/views/default/view_Add.html: 0
 [2014-11-17 23:11:08] EDIT test/models/db1.py: 0
 [2014-11-17 23:11:09] EDIT test/models/db1.py: 0
+<<<<<<< HEAD
 [2014-11-18 01:10:00] EDIT IIIT_MarketPlace/views/default/view_Add.html: 2
 [2014-11-18 01:10:08] EDIT IIIT_MarketPlace/views/default/view_Add.html: 0
 [2014-11-18 01:10:31] EDIT IIIT_MarketPlace/views/default/view_Add.html: 0
@@ -429,3 +430,8 @@
 [2014-11-18 10:31:32] EDIT IIIT_MarketPlace/views/default/index.html: -13
 [2014-11-18 10:31:46] EDIT IIIT_MarketPlace/views/default/index.html: -17
 [2014-11-18 10:32:15] EDIT IIIT_MarketPlace/views/default/index.html: -2
+=======
+[2014-11-18 01:10:06] EDIT IIIT_MarketPlace/views/layout.html: 0
+[2014-11-18 01:10:06] EDIT IIIT_MarketPlace/views/layout.html: 0
+[2014-11-18 01:10:06] EDIT IIIT_MarketPlace/views/layout.html: 0
+>>>>>>> e5e20d7584a219f034ed1fc900084a3625055d38
