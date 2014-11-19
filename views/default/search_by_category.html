@@ -1,0 +1,122 @@
+{{include 'web2py_ajax.html'}}
+<head>
+    <style>
+     .index_add {
+         width: 700px;
+         float: left;
+         border: 1px solid black;
+         padding: 5px;
+     }
+
+     img {
+         width: 200px;
+         height: 200px;
+         float:left;
+     }
+     .view_post_title {
+         float: left;
+     }
+     .view_post_text {
+         float: left;
+     }
+
+     .space_div {
+         width: 70px;
+         height: 50px;
+         float: left;
+     }
+
+ </style>
+    <script>
+$(document).ready(function(){
+    
+      $('#category_dd').change(function() {
+
+           //  ajax("{{=URL('default','view_Add')}}",['hi'],'target');
+             var category_value=$('#category_dd').val();
+        
+          //window.location="{{=URL('default','view_Add/18')}}"
+$.ajax({
+        type: "POST",
+    url:"{{=URL('default','search_by_category')}}",
+    data:{category_value:category_value},
+     success: function (data){
+         
+         $('#target').html(data);
+        },
+    error: function(jqXHR, exception) {
+            if (jqXHR.status === 0) {
+                alert('Not connect.\n Verify Network.');
+            } else if (jqXHR.status == 404) {
+                alert('Requested page not found. [404]');
+            } else if (jqXHR.status == 500) {
+                alert('Internal Server Error [500].');
+            } else if (exception === 'parsererror') {
+                alert('Requested JSON parse failed.');
+            } else if (exception === 'timeout') {
+                alert('Time out error.');
+            } else if (exception === 'abort') {
+                alert('Ajax request aborted.');
+            } else {
+                alert('Uncaught Error.\n' + jqXHR.responseText);
+            }
+        }
+      });
+
+});//end of select
+    $('#filter_price').change(function() {
+           //  ajax("{{=URL('default','view_Add')}}",['hi'],'target');
+             var filter_price=$('#filter_price').val();
+
+$.ajax({
+        type: "POST",
+    url:"{{=URL('default','search_by_price')}}",
+    data:{filter_price:filter_price},
+     success: function (data){
+         $('#target').html(data);
+        },
+    error: function(jqXHR, exception) {
+            if (jqXHR.status === 0) {
+                alert('Not connect.\n Verify Network.');
+            } else if (jqXHR.status == 404) {
+                alert('Requested page not found. [404]');
+            } else if (jqXHR.status == 500) {
+                alert('Internal Server Error [500].');
+            } else if (exception === 'parsererror') {
+                alert('Requested JSON parse failed.');
+            } else if (exception === 'timeout') {
+                alert('Time out error.');
+            } else if (exception === 'abort') {
+                alert('Ajax request aborted.');
+            } else {
+                alert('Uncaught Error.\n' + jqXHR.responseText);
+            }
+        }
+});
+      });//select
+});
+    </script>
+
+</head>
+<div id="target">
+{{if len(rows)>0:}}
+{{for i,row in enumerate(rows):}}
+ {{if i==items_per_page: break}}
+<a href="{{=URL('view_Add.html',args=[row.id])}}">
+<div class="index_add" id="target">
+    <img src="{{=URL('download', args=row.item_img)}}" />
+    <div class="space_div"></div>
+    <div class="view_post_title">Item:</div><div class="view_post_text">{{=row.item_name}}</div><br>
+    <div class="view_post_title">Posted By:</div><div class="view_post_text">{{=row.created_by.first_name}}</div><br>
+    <div class="view_post_title">Price:</div><div class="view_post_text">{{=row.price}}</div><br>
+    </div></a><br><br>
+     <div class="space_div"></div>
+{{pass}}
+{{else:}}
+<div><h1>
+    No Items Found
+    </h1>
+    </div>
+{{pass}}
+</div>
+</div>
