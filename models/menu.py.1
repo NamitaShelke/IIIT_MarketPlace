@@ -21,13 +21,14 @@ response.google_analytics_id = None
 #########################################################################
 ## this is the main application menu add/remove items as required
 #########################################################################
-
+x='Post Add'
 response.menu += [
-(XML('<img width=50px src="http://127.0.0.1:8000/ARTPOOL/static/pinterest-logo-icon1.png">'), False, 'http://web2py.com', [
-(T('View Boards'), False, URL('admin', 'default', 'site')),
-(T('Upload Pins'), False, URL('admin', 'default','site'))
+
+(T(x.title()), False, URL('default','post_Add'), []),
+(T('View My Posts'), False,'',[])
 ]
-)]
+
+
 
 
 

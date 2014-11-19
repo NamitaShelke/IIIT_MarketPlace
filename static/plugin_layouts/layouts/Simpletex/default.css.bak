@@ -10,23 +10,21 @@ body {
 	background: #FFFFFF url(images/img04.gif) repeat-x;
 	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
 	font-size: 13px;
-	color: #7F7772;
+	color: #4C4646;
 }
 
 h1, h2, h3 {
 	margin-top: 0;
 	font-family: Arial, Helvetica, sans-serif;
 	font-weight: normal;
-	color: #666666;
+	color: #4C4646;
 }
 
 h1 {
 	font-size: 197%;
 }
 
-h2 {
-	font-size: 136%;
-}
+
 
 h3 {
 	font-size: 100%;
@@ -52,7 +50,7 @@ ol {
 }
 
 a {
-	color: #FFBF23;
+	color: #4C4646;
 }
 
 a:hover {
@@ -88,7 +86,7 @@ select {
 /* header */
 
 #header {
-	width: 990px;
+	width: auto;
 	height: 100px;
 	margin: 0 50px;
 }
@@ -97,14 +95,27 @@ select {
 
 #logo {
 	height: 100px;
-	background: #FFBF23 no-repeat left bottom;
+	background: #3EA99F no-repeat left bottom;
     padding: 5px;
 }
 
+#logo img {
+     margin-right: 40px; 
+    float: left;
+}
+
 #logo h1, #logo h2 {
-	margin: 0;
-	text-transform: lowercase;
+	margin: 0;	
 	text-align: center;
+    color: #FEFCFF;
+    float: left;
+    font-size: 40px;
+    font-family: Decorative;
+        
+}
+
+.auth_navbar a{
+    color: #FEFCFF;
 }
 
 #logo h1 {
@@ -112,9 +123,6 @@ select {
 	font-size: 36px;
 }
 
-#logo h2 {
-	font-size: 12px;
-}
 
 #logo a {
 	text-decoration: none;
@@ -167,7 +175,8 @@ select {
 #menu {
 	width: 770px;
 	height: 70px;
-	margin: -30px auto 0 auto;
+	margin: -30px 50px 0 auto;
+    float: right;
 }
 
 #menu ul {
@@ -185,6 +194,9 @@ select {
 
 #menu li:hover {
 	background: #F9F8F1;
+    
+    
+    
 }
 
 #menu a {
@@ -194,9 +206,8 @@ select {
 	padding: 5px 20px 0 20px;
 	text-align: center;
 	text-decoration: none;
-	text-transform: lowercase;
-	font-weight: bold;
-	color: #7F7772;
+    font-weight: bold;
+	color: #FEFCFF;
 }
 
 html>body #menu a {
@@ -205,10 +216,13 @@ html>body #menu a {
 
 #menu li.active {
 	background: #EDEBD5 url(images/img05.gif) no-repeat;
+    
 }
 
 #menu li.active a {
 	background: url(images/img06.gif) no-repeat right top;
+    
+    
 }
 
 /* Page */

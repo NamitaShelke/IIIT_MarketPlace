@@ -23,11 +23,12 @@ response.google_analytics_id = None
 #########################################################################
 
 response.menu += [
-('Post Add', False, '', [
-(T('Sell'), True, URL('admin', 'default', 'site')),
-(T('Wishlist'), True, URL('admin', 'default','site'))
+(T('Home'),False, URL('default','index'),[]),
+(T(('Post add').title()), False, URL('default','post_Add'), []),
+(T('View My Posts'), False,'',[]),
+(T('Wishlist'),False,URL('default','post_Add'),[])
+
 ]
-)]
 
 
 

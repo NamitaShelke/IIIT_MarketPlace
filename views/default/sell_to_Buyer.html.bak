@@ -1,0 +1,2 @@
+{{extend 'layout.html'}}
+<h2>Congrats!! Your Item has been sold!! <h2>

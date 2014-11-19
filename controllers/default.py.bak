@@ -45,8 +45,14 @@ def sell_to_buyer():
     add_query=(db.advertise.id==request.args(1))
     if mail:
         bidder_rows=db(db.auth_user.id==request.args(0)).select()
+        itemName=db(add_query).select()
+        
+        
         for row in bidder_rows:
-            x=mail.send(to=[row.email],subject="hi",message="test")    
+            for i in itemName:
+                a=i.item_name
+            msg="We are glad to inform you that your bid for item " + a + " has been selected in IIIT marketplace."
+            x=mail.send(to=[row.email],subject="Congratulations!! Bid selected",message=msg)    
     if x==True:
         db(add_query).update(status='closed')
         db(add_query).update(sold_to=request.args(1))
@@ -84,7 +90,7 @@ def index():
         page=int(request.args[0])
    else:
         page=0
-   items_per_page=4
+   items_per_page=8
    limitby=(page*items_per_page,(page+1)*items_per_page+1)
    rows=db().select(db.advertise.ALL,limitby=limitby)
    # response.flash = T("Welcome to web2py!")
