@@ -10,19 +10,51 @@
 #########################################################################
 import datetime
     
+def enter_category(form):
+    form.vars.category=form.vars.cat_dropdown
+    
 def post_Add():
     form=SQLFORM(db.advertise)
     form.vars.add_type="sell"
     form.vars.status="open"
     form.vars.ppl_bid=0
    # form=form.process(next='index')
-    form=form.process()
+    my_extra_element = TR(LABEL('Category'),SELECT('HostelHold','Electronics','Vehicles', 'Others',_name="cat_dropdown", value="HostelHold"))
+    form[0].insert(-1,my_extra_element)
+    form=form.process(onvalidation=enter_category)    
     if form.accepted:
         session.flash="Posted Successfully"
         redirect(URL('index'))
     #db.advertise.post_date=request.now()
     return locals()
 
+def view_bidders():
+    query=(db.bidding.add_id==request.args(0)) & (db.advertise.id==request.args(0))
+    rows=db(db.advertise.id==request.args(0)).select()
+    bidder_rows=db(query).select()
+    bid_form=SQLFORM(db.bidding)
+    bid_form.vars.bidder_user_id=auth.user_id
+    bid_form.vars.bidder_user_fn=auth.user.first_name
+    bid_form.vars.bidder_user_ln=auth.user.last_name
+    bid_form.vars.bid_datetime=datetime.datetime.utcnow()
+    bid_form.vars.add_id=request.args(0,cast=int)
+    bid_form.process()
+    return locals()
+
+def sell_to_buyer():
+    add_query=(db.advertise.id==request.args(1))
+    if mail:
+        bidder_rows=db(db.auth_user.id==request.args(0)).select()
+        x=mail.send(to=[bidder_rows.email],subject="hi",message="test")    
+    if x==True:
+        db(add_query).update(status='closed')
+        db(add_query).update(sold_to=request.args(1))
+        response.flash = T("Email sent to user");
+    else:
+        response.flash= T("Mail not sent");
+        
+
+    return locals()
 
 def view_Add():
     #auth_user_with_role = db(db.auth_membership.group_id==request.vars.role).select(d

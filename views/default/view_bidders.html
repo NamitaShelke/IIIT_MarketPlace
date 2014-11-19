@@ -1,0 +1,67 @@
+{{extend 'layout.html'}}
+
+<html>
+
+    <head>
+        <style>
+            table, tr {
+            border: 1px solid black;
+            }
+            
+             td {
+                 border: 1px solid black;
+                 width: 250px;
+             }
+            
+        </style>
+        <script>
+            function getBuyer() {
+               var x = document.getElementsByName("buyer");
+               var i,b_id=0,b_val;
+               for (i = 0; i < x.length; i++) {
+                   if(x[i].checked == true) {
+                       b_id=x[i].id;
+                       b_val=x[i].value
+                       break;
+                   }
+               }
+                if(b_id==0) {
+                    alert("Please select a buyer");
+                }
+                else {
+                    window.location.href="{{=URL('default','sell_to_buyer')}}" + '/' + b_id + '/' + b_val;
+                }
+                
+                
+            }
+        </script>
+    </head>
+    <body>
+       
+     
+    {{if len(bidder_rows)>0 : }}
+         <table>
+            <tr>
+            <th>Add id</th>
+            <th>User Name</th>
+            <th>bid price</th>
+            <th>Date</th>
+            <th>Select</th></tr>
+       
+  {{for brow in bidder_rows:}}
+    <tr>
+        <td>{{=brow.bidding.add_id}}</td>
+        <td>{{=brow.bidding.bidder_user_fn}} {{=brow.bidding.bidder_user_ln}}</td>
+        <td>{{=brow.bidding.bid_price}}</td>
+        <td> {{=brow.bidding.bid_datetime}}</td>
+        <td><input type="radio" name="buyer" value="{{=brow.bidding.add_id}}" id={{=brow.bidding.bidder_user_id}}></td>
+    </tr>
+   {{pass}}
+    </table>
+   {{else:}}
+    <div class="view_bids_class">No Bidders</div>
+    {{pass}}
+        
+    <input type="button" value="Sell to selected buyer" onclick="getBuyer()"><br>
+    </body>
+</html>

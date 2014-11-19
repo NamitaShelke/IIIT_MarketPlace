@@ -20,6 +20,7 @@ db.define_table('advertise',
                 Field('status','string',requires=IS_NOT_EMPTY(),readable=False,writable=False),
                 #Field('post_date','datetime',requires=IS_NOT_EMPTY(),readable=False,writable=False),
                 Field('ppl_bid','integer',readable=False,writable=False),
+                Field('sold_to','integer',requires=IS_IN_DB(db,db.auth_user.id),readable=False,writable=False),
                 #Field('item_img','upload'),
                Field('item_img','upload',uploadfield="myblob"),Field('myblob','blob',default=''),
                 auth.signature)
@@ -30,6 +31,6 @@ db.define_table('bidding',
                 Field('bidder_user_fn',requires=IS_NOT_EMPTY(),readable=False,writable=False),
                 Field('bidder_user_ln',requires=IS_NOT_EMPTY(),readable=False,writable=False),
                 Field('bid_price','integer',requires=IS_NOT_EMPTY()),
-                Field('bid_datetime','datetime',requires=IS_NOT_EMPTY()),
+                Field('bid_datetime','datetime',requires=IS_NOT_EMPTY(),readable=False,writable=False),
                 Field('add_id','integer',requires=IS_IN_DB(db,db.advertise.id),readable=False,writable=False)
             )

@@ -22,65 +22,16 @@ response.google_analytics_id = None
 ## this is the main application menu add/remove items as required
 #########################################################################
 
-
-
-response.menu = [
-         [T('root1'.title()),
-             False,
-             '',
-             [
-             [T('level1-1'),
-                 False,
-                 URL(request.application,
-                 'controller',
-                 'function'),
-                 [
-                     [T('level2-1').capitalize(),
-                     False,
-                     URL(request.application,
-                     'controller',
-                     'function'),
-                     []],
-                 ]],
-             [T('level1-2').capitalize(),
-                 False,
-                 URL(request.application,
-                 'controller',
-                 'function'),
-                 []],
-             [T('level1-3').capitalize(),
-                 False,
-                 URL(request.application,
-                 'controller',
-                 'function'),
-                 []],
-         ]],
-
-         [T('root2').title(),
-             False,
-             '',
-             [
-                 [T('level1-1').capitalize(),
-                     False,
-                     URL(request.application,
-                     'controller',
-                     'function'),
-                     []],
-                 [T('level1-2').capitalize(),
-                     False,
-                     URL(request.application,
-                     'controller',
-                     'function'),
-                     []],
-         ]],
-        ]
-
-
-
-
 response.menu += [
-    (T('My Profile').capitalize(), False, URL('default', 'index'), [])
+('Post Add', False, '', [
+(T('Sell'), True, URL('admin', 'default', 'site')),
+(T('Wishlist'), True, URL('admin', 'default','site'))
 ]
+)]
+
+
+
+
 
 DEVELOPMENT_MENU = True
 

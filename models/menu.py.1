@@ -23,13 +23,11 @@ response.google_analytics_id = None
 #########################################################################
 
 response.menu += [
-('Post Add', False, '', [
-(T('Sell'), True, URL('admin', 'default', 'site')),
-(T('Wishlist'), True, URL('admin', 'default','site'))
+(XML('<img width=50px src="http://127.0.0.1:8000/ARTPOOL/static/pinterest-logo-icon1.png">'), False, 'http://web2py.com', [
+(T('View Boards'), False, URL('admin', 'default', 'site')),
+(T('Upload Pins'), False, URL('admin', 'default','site'))
 ]
 )]
-
-
 
 
 
