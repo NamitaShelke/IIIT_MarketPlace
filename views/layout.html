@@ -27,10 +27,7 @@ response.files.insert(3,URL('static','js/web2py.js'))
 response.include_meta()
 response.include_files()
 }}
-<<<<<<< HEAD
-=======
 
->>>>>>> 71570326bd90abece49e73dddb8c1e0e7e5b84dd
   <style>
 ul.web2py-menu-vertical { width: 150px; position: relative; top:1em; left:1em;  z-index:30; border:0; margin:0; padding: 0; list-style: none; text-decoration: none;}
 ul.web2py-menu-vertical li { margin:0; padding:0; border:0; width: 150px; background: black; text-align:left;}
@@ -65,7 +62,8 @@ div.error { background-color: red; color: white; padding: 3px; }
     </form>
    </div>
     <script>
-      jQuery(document).ready(function(){jQuery('ul.web2py-menu').superfish({delay:400});});
+      jQuery(document).ready(function(){jQuery('ul.web2py-menu').superfish({delay:400})
+                                       });
     </script>
   </div>
   <hr />
@@ -88,12 +86,12 @@ div.error { background-color: red; color: white; padding: 3px; }
          </span>
         </h3>
         <p>
-          <select>
-              <option value="all">All</option>
-              <option value="hs">Hostelhold</option>
-              <option value="elect">Electronics</option>
-              <option value="mercedes">Vehicles</option>
-              <option value="audi">Others</option>
+          <select id="category_dd">
+              <option value="0">All</option>
+              <option value="HostelHold">HostelHold</option>
+              <option value="Electronics">Electronics</option>
+              <option value="Vehicles">Vehicles</option>
+              <option value="Others">Others</option>
            </select> 
         </p>
        </li>
@@ -105,12 +103,12 @@ div.error { background-color: red; color: white; padding: 3px; }
          
         </h3>
         <p>
-         <select>
-              <option value="all">All</option>
-              <option value="hs">0-15 days old</option>
-              <option value="elect">15-30 days old</option>
-              <option value="mercedes">30-60 days old</option>
-              <option value="audi">older than 60 days</option>
+         <select id="filter_date">
+              <option value="ALL">All</option>
+              <option value="15">0-15 days old</option>
+              <option value="30">15-30 days old</option>
+              <option value="60">30-60 days old</option>
+              <option value="61">older than 60 days</option>
            </select> 
         </p>
        </li>
@@ -121,12 +119,12 @@ div.error { background-color: red; color: white; padding: 3px; }
          </span>
         </h3>
         <p>
-          <select>
-              <option value="all">All</option>
-              <option value="b_hnd">Below 100</option>
-              <option value="elect">100-1000</option>
-              <option value="mercedes">1000-2000</option>
-              <option value="audi">Above 2000</option>
+          <select id="filter_price">
+              <option value="0">All</option>
+              <option value="500">Below 500</option>
+              <option value="2000">501-2000</option>
+              <option value="5000">2001-5000</option>
+              <option value="5001">Above 5000</option>
            </select> 
         </p>
        </li>

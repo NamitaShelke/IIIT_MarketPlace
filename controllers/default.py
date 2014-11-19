@@ -28,6 +28,7 @@ def view_Add():
     #auth_user_with_role = db(db.auth_membership.group_id==request.vars.role).select(d
     #rows=db(db.advertise.id==request.args(0)).select()
     ############bidding_rows=db(db.bidding.add_id==request.args(0)).select()
+
     query=(db.bidding.add_id==request.args(0)) & (db.advertise.id==request.args(0))
     rows=db(db.advertise.id==request.args(0)).select()
     bidder_rows=db(query).select()
@@ -37,33 +38,56 @@ def view_Add():
     bid_form.vars.bidder_user_ln=auth.user.last_name
     bid_form.vars.bid_datetime=datetime.datetime.utcnow()
     bid_form.vars.add_id=request.args(0,cast=int)
-    bid_form.process()
+    bid_form=bid_form.process()
     if bid_form.accepted:
-        session.flash="Bidded Successfully"
-
-    #bidder_rows=db(db.bidding.add_id==request.args(0)).select()
-   # bidders_rows=db().select()
-   # users = db(db.auth_user.id>=1).select(db.auth_user.ALL)
-    #for user in users:
-       # response.write(user.id)
-       # user_rows=db(db.auth_user.id==user.id).select(db.auth_user.first_name)
-    #    ad_rows=db(db.advertise.created_by==user.id).select()
-   # user_name=db(db.advertise.created_by).select(auth_user.firstname)
+        #session.flash="Bidded Successfully"
+        redirect(URL("view_Add",args=request.args(0)))
     return locals()
 
 @auth.requires_login()
 def index():
+
    if len(request.args):
         page=int(request.args[0])
    else:
         page=0
-   items_per_page=8
+   items_per_page=4
    limitby=(page*items_per_page,(page+1)*items_per_page+1)
    rows=db().select(db.advertise.ALL,limitby=limitby)
    # response.flash = T("Welcome to web2py!")
    return locals()
-
-
+    
+def search_by_category():
+   if len(request.args):
+       page=int(request.args[0])
+   else:
+       page=0
+   items_per_page=10
+   limitby=(page*items_per_page,(page+1)*items_per_page+1)
+   if request.vars.category_value=="0":
+                rows=db(db.advertise).select()
+   else:
+                rows=db(db.advertise.category==request.vars.category_value).select(limitby=limitby)
+   return locals()
+        
+def search_by_price():
+   if len(request.args):
+       page=int(request.args[0])
+   else:
+       page=0
+   items_per_page=10
+   limitby=(page*items_per_page,(page+1)*items_per_page+1)
+   if int(request.vars.filter_price)==0:
+                rows=db(db.advertise).select()
+   if int(request.vars.filter_price)==500:
+                rows=db(db.advertise.price < int(request.vars.filter_price)).select(limitby=limitby)
+   if int(request.vars.filter_price)==2000:
+                rows=db((db.advertise.price > 501) & (db.advertise.price < int(request.vars.filter_price))).select(limitby=limitby)
+   if int(request.vars.filter_price)==5000:
+                rows=db((db.advertise.price > 2001) & (db.advertise.price < int(request.vars.filter_price))).select(limitby=limitby)
+   if int(request.vars.filter_price)==5001:
+                rows=db(db.advertise.price > int(request.vars.filter_price)).select(limitby=limitby)
+   return locals()
 
 def user():
     """
